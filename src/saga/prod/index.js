@@ -27,13 +27,17 @@ export function* addProdyAsync({payload}) {
      
       if(!newProd.error){
         yield  Message('Produto Salvo com Sucesso !!','success');
+        yield localStorage.setItem('add_prod',true)
       } else{
         let msg = `${newProd.msg}  \n${(newProd.erros)?JSON.stringify(newProd.erros):''}`
         yield Message(msg,'warning');
+        yield put(addProdFailure(msg));
+        yield localStorage.removeItem('add_prod')
       }
     } catch (error) {
       yield put(addProdFailure(error.message));
       yield Message(error.message,'warning'); 
+      yield localStorage.removeItem('add_prod')
     }
   }
 
@@ -49,6 +53,7 @@ export function* addProdyAsync({payload}) {
       } else{
         let msg = `${editedProd.msg}  ${(editedProd.erros)?JSON.stringify(editedProd.erros):''}`
         yield Message(msg,'warning');
+        yield put(editProdFailure(msg));
       }
     } catch (error) {
       yield put(editProdFailure(error.message));
@@ -69,6 +74,7 @@ export function* addProdyAsync({payload}) {
         let msg = `${resp.msg}  ${(resp.erros)?JSON.stringify(resp.erros):''}`
 
         yield Message(msg,'warning');
+        yield put(deleteProdFailure(msg));
       }
     } catch (error) {
       yield put(deleteProdFailure(error.message));

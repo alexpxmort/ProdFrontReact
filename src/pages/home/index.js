@@ -1,6 +1,5 @@
 import FormCustom from "../../components/form/produto.form"
-import {createRef} from 'react';
-import {useDispatch,useSelector} from 'react-redux'
+import {useDispatch} from 'react-redux'
 import{addProdStart} from '../../reducers/actions/prod/index'
 
 const initialData = {
@@ -11,22 +10,22 @@ const initialData = {
 };
 
 
-const formRef = createRef();
-
 const HomePage = ()=>{
-    const prod = useSelector(state => state.prod);
     const dispatch = useDispatch()
 
-    const handleSubmit = async (data)=>{
-       await dispatch (addProdStart(data))
-       console.log(prod)
-     }
+    const id = 'prod_form';
+    
+    const addProd =  (data)=>{
+        dispatch (addProdStart(data))
+    }
 
+  
+    const handleSubmit =  (data)=>{
+         addProd(data)
+     }
      
     return (
-        <div>
-           <FormCustom ref={formRef} initialData ={initialData} handleSubmit={handleSubmit}/>
-        </div>
+           <FormCustom id={id}  initialData ={initialData} handleSubmit={handleSubmit}/>
     )
 }
 
