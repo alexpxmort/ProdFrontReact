@@ -24,10 +24,12 @@ export function* addProdyAsync({payload}) {
       
       yield put(addProdSuccess(newProd.produto));
 
-      if(!newProd.erro){
+     
+      if(!newProd.error){
         yield  Message('Produto Salvo com Sucesso !!','success');
       } else{
-        yield Message(newProd.msg,'warning');
+        let msg = `${newProd.msg}  \n${(newProd.erros)?JSON.stringify(newProd.erros):''}`
+        yield Message(msg,'warning');
       }
     } catch (error) {
       yield put(addProdFailure(error.message));
@@ -42,10 +44,11 @@ export function* addProdyAsync({payload}) {
       
       yield put(editProdSuccess(editedProd.produto));
 
-      if(!editedProd.erro){
+      if(!editedProd.error){
         yield  Message('Produto atualizado com Sucesso !!','success'); 
       } else{
-        yield Message(editedProd.msg,'warning');
+        let msg = `${editedProd.msg}  ${(editedProd.erros)?JSON.stringify(editedProd.erros):''}`
+        yield Message(msg,'warning');
       }
     } catch (error) {
       yield put(editProdFailure(error.message));
@@ -60,10 +63,12 @@ export function* addProdyAsync({payload}) {
       
       yield put(deleteProdSuccess(payload));
 
-      if(!resp.erro){
+      if(!resp.error){
         yield  Message('Produto removido com Sucesso !!','success'); 
       } else{
-        yield Message(resp.msg,'warning');
+        let msg = `${resp.msg}  ${(resp.erros)?JSON.stringify(resp.erros):''}`
+
+        yield Message(msg,'warning');
       }
     } catch (error) {
       yield put(deleteProdFailure(error.message));
