@@ -110,7 +110,7 @@ export function* addProdyAsync({payload}) {
 export function* fetchProdAsync({payload}) {
   try {
     const prods = yield getAllMethod('produtos');
-    yield put(fetchProdSuccess(prods));
+    yield put(fetchProdSuccess(prods.produtos));
   } catch (error) {
     yield put(fetchProdFailure(error.message));
   }
