@@ -29,8 +29,7 @@ const ListPage = ()=>{
         'Nome',
         'Descrição',
         'Preço',
-        'Quantidade',
-        'Ações'
+        'Quantidade'
     ])
 
     const [rows,setRows] = useState([])

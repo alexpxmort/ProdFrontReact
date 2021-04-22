@@ -5,6 +5,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import {memo} from 'react'
+import EditIcon from '@material-ui/icons/Edit';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 
 const TableCustom = ({rows,headers,data_names})=>{
@@ -20,6 +22,9 @@ const TableCustom = ({rows,headers,data_names})=>{
                             </TableCell>
                         ))
                     }
+                    <TableCell>
+                        Ações
+                    </TableCell>
                 </TableRow>
             </TableHead>
             <TableBody>
@@ -36,10 +41,10 @@ const TableCustom = ({rows,headers,data_names})=>{
                                 })
                             }
                             <TableCell>
-                                    Editar
+                                    <EditIcon/>
                             </TableCell>
                             <TableCell>
-                                    Excluir
+                                    <DeleteIcon/>
                             </TableCell>
                         </TableRow>
                     ))
