@@ -1,6 +1,13 @@
+    /**
+ *Seletor de Produto
+ * 
+ */
+    
+
+
 import {createSelector} from 'reselect'
 
-const selectProd = state =>state.prod;
+const selectProd = state =>state.prodX;
 
 export const selectProdutos = createSelector(
     [selectProd],

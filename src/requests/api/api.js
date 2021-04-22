@@ -1,9 +1,13 @@
+    /**
+ *Parte com metodos de CRUD que comunica com a api em NodeJS
+ * 
+ */
+
 import axios from 'axios'
 
  const request = {
     "URL_DEV":'http://localhost:4500/'
 }
-
 
 let api = axios.create({
   baseURL: request.URL_DEV, 

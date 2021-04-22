@@ -1,3 +1,10 @@
+    /**
+ * Página de Adicionar Produto
+ * 
+ */
+    
+
+
 import FormCustom from "../../components/form/produto.form"
 import {useDispatch} from 'react-redux'
 import{addProdStart} from '../../reducers/actions/prod/index'
@@ -12,7 +19,7 @@ const initialData = {
 };
 
 
-const HomePage = ({history})=>{
+const AddProdPage = ({history})=>{
     const dispatch = useDispatch()
 
     const id = 'prod_form';
@@ -45,4 +52,4 @@ const HomePage = ({history})=>{
     )
 }
 
-export default withRouter(HomePage);
+export default withRouter(AddProdPage);

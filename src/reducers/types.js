@@ -1,3 +1,8 @@
+    /**
+ *Types a serem usados no  reducer de produto
+ * 
+ */
+
 export const ProdActionTypes = {
     ADD_PROD_START:'ADD_PROD_START',
     ADD_PROD_SUCCESS:'ADD_PROD_SUCCESS',

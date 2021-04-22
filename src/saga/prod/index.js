@@ -1,3 +1,11 @@
+
+
+/**
+ *Sagas de produto
+ * 
+ */
+
+
 import { takeLatest, call, put,all } from 'redux-saga/effects';
 import _ from 'lodash'
 import {Message} from '../../components/msg_alerts/msg_alerts'
@@ -82,9 +90,9 @@ export function* addProdyAsync({payload}) {
   export function* getProdStartAsync({payload}){
     try {
 
-      let prod  = yield getByIdMethod('produto',payload);
+      let prod  = yield getByIdMethod('produtos',payload);
       
-      yield put(getProdSuccess(prod));
+      yield put(getProdSuccess(prod.produto));
     } catch (error) {
       yield put(getProdFailure(error.message));
       yield Message(error.message,'warning'); 

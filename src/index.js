@@ -1,6 +1,11 @@
+
+    /**
+ *Onde inicia a aplicação ReactJS
+ * 
+ */
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import{BrowserRouter} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';

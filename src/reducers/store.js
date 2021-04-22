@@ -1,3 +1,8 @@
+    /**
+ *Configuração da store
+ * 
+ */
+
 import {createStore,applyMiddleware} from 'redux';
 import createSagaMiddleware from 'redux-saga';
 

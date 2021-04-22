@@ -1,5 +1,12 @@
+    /**
+ * Página de Listagem de  Produtos
+ * 
+ */
+    
+
+
 import TableCustom from "../../components/table";
-import {useState,useEffect,useMemo} from 'react';
+import {useState,useEffect} from 'react';
 import {useSelector,useDispatch,shallowEqual} from 'react-redux'
 import { fetchProdStart } from "../../reducers/actions/prod/index";
 import {selectProdutos} from '../../reducers/selectors/prod/index'
@@ -24,13 +31,11 @@ const ListPage = ({history})=>{
      }
 
     useEffect(()=>{
-        console.log('udpate')
         setRows(produtos)
     },[produtos])
 
 
     useEffect(()=>{
-        console.log('xxx')
         fecthProdutos()
     },[])
 

@@ -1,4 +1,10 @@
 
+    /**
+ * Componente Customizado de Modal de Confirmação de Delete
+ * 
+ */
+    
+    
     import { Dialog,DialogTitle,List,ListItemText,ListItem } from '@material-ui/core';
     
     const ModalConfirmDelete = ({open,handleFuncYes,onClose,msg,idDel})=>{
