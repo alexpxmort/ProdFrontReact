@@ -1,13 +1,9 @@
 
-//import {Alert} from '@material-ui/core'
-export const Message =(msg,type)=> {
-    // return(
-    //     <Alert severity={type}>
-    //         {msg}
-    //     </Alert>
-    // )
+import Swal from 'sweetalert2'
 
-    alert(msg)
-}
+export const Message =(msg,type)=> Swal.fire({
+    icon:type,
+    title:msg
+});
 
 export default Message;
