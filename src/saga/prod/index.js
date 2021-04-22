@@ -27,17 +27,14 @@ export function* addProdyAsync({payload}) {
      
       if(!newProd.error){
         yield  Message('Produto Salvo com Sucesso !!','success');
-        yield localStorage.setItem('add_prod',true)
       } else{
         let msg = `${newProd.msg}  \n${(newProd.erros)?JSON.stringify(newProd.erros):''}`
         yield Message(msg,'warning');
         yield put(addProdFailure(msg));
-        yield localStorage.removeItem('add_prod')
       }
     } catch (error) {
       yield put(addProdFailure(error.message));
       yield Message(error.message,'warning'); 
-      yield localStorage.removeItem('add_prod')
     }
   }
 
