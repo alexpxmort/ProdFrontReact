@@ -11,12 +11,12 @@
                         {msg}
                     </DialogTitle>
                     <List style={{flexDirection:'row',alignItems:'center'}}>
-                        <ListItem  button onClick={()=>{handleFuncYes(idDel);onClose()}} style={{backgroundColor:'#007bff',marginBottom:5,borderRadius:10,width:'50%',marginLeft:90}} divider={true}>
+                        <ListItem  button onClick={()=>{handleFuncYes(idDel);onClose()}} style={{backgroundColor:'#007bff',marginBottom:5,borderRadius:10,width:'50%',marginLeft:104}} divider={true}>
                             <ListItemText style={{textAlign:'center'}}>
                                 Sim
                             </ListItemText>
                         </ListItem>
-                        <ListItem button onClick={()=>onClose()} style={{backgroundColor:'#dc3545',borderRadius:10,width:'50%',marginLeft:90}}>
+                        <ListItem button onClick={()=>onClose()} style={{backgroundColor:'#dc3545',borderRadius:10,width:'50%',marginLeft:104}}>
                             <ListItemText style={{textAlign:'center'}}>
                             Cancelar
                             </ListItemText>

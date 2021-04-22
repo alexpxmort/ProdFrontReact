@@ -1,6 +1,8 @@
 import FormCustom from "../../components/form/produto.form"
 import {useDispatch} from 'react-redux'
 import{addProdStart} from '../../reducers/actions/prod/index'
+import {withRouter} from 'react-router-dom'
+import Message from "../../components/msg_alerts/msg_alerts";
 
 const initialData = {
     nome:'',
@@ -10,7 +12,7 @@ const initialData = {
 };
 
 
-const HomePage = ()=>{
+const HomePage = ({history})=>{
     const dispatch = useDispatch()
 
     const id = 'prod_form';
@@ -19,9 +21,23 @@ const HomePage = ()=>{
         dispatch (addProdStart(data))
     }
 
+    const goListProd = ()=>{
+        history.push('/');
+    }
+
   
     const handleSubmit =  (data)=>{
+
+        if(isNaN(data.preco)){
+            Message('Formato de Preço inválido!\n Digite novamente outro valor!','warning')
+
+            return false
+        }
+
          addProd(data)
+         setTimeout(()=>{
+            goListProd() 
+         },1500)
      }
      
     return (
@@ -29,4 +45,4 @@ const HomePage = ()=>{
     )
 }
 
-export default HomePage;
+export default withRouter(HomePage);

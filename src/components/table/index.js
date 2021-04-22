@@ -10,7 +10,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 import {useState} from 'react'
 import ModalConfirmDelete from '../modal/modal_confirm';
-import {isObject} from '../../utils/string.utils'
+import {isObject,empty} from '../../utils/string.utils'
 import './table.styles.css'
 
 
@@ -18,14 +18,16 @@ const TableCustom = ({rows,headers,data_names,handleEdit,handleDelete,handleAdd}
 
     const [open,setOpen] = useState(false)
     const [idDel,setIdDel]  = useState(null);
+    const [nome,setNome]  = useState(null);
 
     const onClose = ()=>{
         setOpen(false)
     }
 
-    const showModalDelete = (id)=>{
+    const showModalDelete = (id,nome)=>{
         setOpen(true)
-        setIdDel(id)
+        setIdDel(id);
+        setNome(nome);
     }
 
     const ModalDialodDelete = ()=>{        
@@ -36,7 +38,7 @@ const TableCustom = ({rows,headers,data_names,handleEdit,handleDelete,handleAdd}
         }
         return(
                <ModalConfirmDelete
-                msg={'Deseja mesmo deletar este produto?'}
+                msg={`Deseja mesmo deletar este produto:  ${nome}?`}
                 open={open}
                 onClose={onClose}
                 idDel={idDel}
@@ -89,7 +91,12 @@ const TableCustom = ({rows,headers,data_names,handleEdit,handleDelete,handleAdd}
                                                     </span>
                                                 </span> 
                                                 
-                                            ):row[val]
+                                            ):(
+                                                (empty(row[val]))?
+                                                (
+                                                    'Não possui !'
+                                                ):row[val]
+                                            )
                                         }
                                         </TableCell>
                                     )
@@ -99,7 +106,7 @@ const TableCustom = ({rows,headers,data_names,handleEdit,handleDelete,handleAdd}
                                     <EditIcon onClick={()=>handleEdit(row.id)}/>
                             </TableCell>
                             <TableCell>
-                                    <DeleteIcon  onClick={()=>showModalDelete(row.id)}/>
+                                    <DeleteIcon  onClick={()=>showModalDelete(row.id,row.nome)}/>
                             </TableCell>
                         </TableRow>
                     ))
