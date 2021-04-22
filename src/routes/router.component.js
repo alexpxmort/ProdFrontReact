@@ -5,8 +5,9 @@ import ListPage from '../pages/list';
 
 const  Router  = ()=>(
     <Switch>
-        <Route exact component={HomePage} path="/"/>
-        <Route  component={ListPage} path="/list"/>
+        <Route exact component={ListPage} path="/"/>
+        <Route  component={HomePage} path="/add"/>
+        <Route  component={HomePage} path="/edit/:id"/>
     </Switch>
 )
 

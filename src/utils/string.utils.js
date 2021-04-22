@@ -53,3 +53,6 @@ export const  empty = ( val ) =>{
 
   return false;
 }
+export const isObject = (val) => {
+  return val instanceof Object; 
+}

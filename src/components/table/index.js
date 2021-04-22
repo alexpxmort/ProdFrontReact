@@ -7,11 +7,57 @@ import Paper from '@material-ui/core/Paper';
 import {memo} from 'react'
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import {useState} from 'react'
+import ModalConfirmDelete from '../modal/modal_confirm';
+import {isObject} from '../../utils/string.utils'
+import './table.styles.css'
 
 
-const TableCustom = ({rows,headers,data_names})=>{
+const TableCustom = ({rows,headers,data_names,handleEdit,handleDelete,handleAdd})=>{
+
+    const [open,setOpen] = useState(false)
+    const [idDel,setIdDel]  = useState(null);
+
+    const onClose = ()=>{
+        setOpen(false)
+    }
+
+    const showModalDelete = (id)=>{
+        setOpen(true)
+        setIdDel(id)
+    }
+
+    const ModalDialodDelete = ()=>{        
+        if(idDel === null){
+            return(
+                <div/>
+            )
+        }
+        return(
+               <ModalConfirmDelete
+                msg={'Deseja mesmo deletar este produto?'}
+                open={open}
+                onClose={onClose}
+                idDel={idDel}
+                handleFuncYes={handleDelete}
+                /> 
+        )
+    }
     return(
         <Paper>
+            <div style={{textAlign:'end',marginTop:40,marginRight:100}}>
+                <AddCircleIcon fontSize={'large'} onClick={()=>handleAdd()} />
+            </div>
+
+            <div>
+                {
+                    (open)?(
+                        ModalDialodDelete()
+                    ):null
+                }
+            </div>
+
            <Table>
            <TableHead>
                 <TableRow>
@@ -35,16 +81,25 @@ const TableCustom = ({rows,headers,data_names})=>{
                                 data_names.map((val,idx)=>{
                                     return(
                                         <TableCell  key={idx}>
-                                        {row[val]}
+                                        {
+                                            isObject(row[val])?(
+                                                <span className='MuiBadge-root' style={{marginLeft:18}}>
+                                                    <span className="MuiBadge-badge MuiBadge-anchorOriginTopRightRectangle" style={{backgroundColor:row[val]['cor'],color:'#FFF'}}>
+                                                    {row[val]['nome']}
+                                                    </span>
+                                                </span> 
+                                                
+                                            ):row[val]
+                                        }
                                         </TableCell>
                                     )
                                 })
                             }
                             <TableCell>
-                                    <EditIcon/>
+                                    <EditIcon onClick={()=>handleEdit(row.id)}/>
                             </TableCell>
                             <TableCell>
-                                    <DeleteIcon/>
+                                    <DeleteIcon  onClick={()=>showModalDelete(row.id)}/>
                             </TableCell>
                         </TableRow>
                     ))

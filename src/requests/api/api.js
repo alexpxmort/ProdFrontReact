@@ -50,7 +50,7 @@ export const updateMethod = async (data,path,id)=>{
 
   export const deleteMethod = async (path,id)=>{
 
-    const resp = await api.delete(`${path}/delete/${id}`);
+    const resp = await api.delete(`${path}/${id}`);
 
     return resp.data;
 
