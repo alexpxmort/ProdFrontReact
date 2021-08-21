@@ -1,11 +1,21 @@
 import React from 'react';
 import InputMask from 'react-input-mask';
-import MaterialInput from '@material-ui/core/Input';
+import {TextField} from '@material-ui/core';
 
-const MaskedInput = (mask: string, value: string, onChange: any) => (
+interface MaskedInputProps {
+	mask: string;
+	value: string;
+	onChange: any;
+}
+
+const MaskedInput: React.FC<MaskedInputProps> = ({
+  mask, value, onChange, ...rest
+}) => (
   <InputMask mask={mask} value={value} onChange={onChange} maskChar={null}>
-    {/* {(inputProps) => <MaterialInput {...inputProps} type="text" disableUnderline />} */}
+		{(inputProps) => (
+			<TextField variant="outlined" {...inputProps} {...rest} />
+		)}
   </InputMask>
 );
-
 export default MaskedInput;
+

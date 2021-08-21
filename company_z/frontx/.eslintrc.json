@@ -33,8 +33,11 @@
 			"react/destructuring-assignment":"off",
 			"@typescript-eslint/explicit-module-boundary-types":"off",
 			"react/jsx-props-no-spreading":"off",
-			"no-multiple-empty-lines":"off"
-
+			"no-multiple-empty-lines":"off",
+			"no-tabs":"off",
+			"react/jsx-indent-props": "off",
+			"react/jsx-indent" : "off",
+			"object-curly-spacing": "off"
 	},
 	"settings": {
 		"import/parsers": {
