@@ -1,0 +1,181 @@
+{
+	"swagger":"2.0",
+	"info":{
+		"version":"1.0.0",
+		"title":"Company API",
+		"description":"API de companies",
+		"license":{
+			"name":"MIT",
+			"url":"https://opensource.org/license/MIT"
+		}
+	},
+	"host": "localhost:3333",
+	"basePath": "",
+	"schemes": [
+		"http",
+		"https"
+	],
+	"tags": [
+		{
+			"name": "Companies",
+			"description": "API de Companies"
+		}
+	],
+	"definitions": {
+		"Company":{
+			"properties": {
+				"nome":{
+					"type":"string"
+					},
+					"cnpj":{
+						"type":"string"
+					},
+					"sobre":{
+						"type":"string"
+					},
+					"faturamento":{
+						"type":"string"
+					},
+					"demanda":{
+						"type":"number"
+					}
+			}
+		}
+	},
+	"paths": {
+		"/companies":{
+			"get": {
+				"tags": [
+					"Companies"
+				],
+				"summary":"Gel all Companies",
+				"responses":{
+					"200":{
+						"description":"OK",
+						"schema":{
+							"$ref":"#/definitions/Company"
+						}
+					}
+				}
+			},
+			"post": {
+				"tags": [
+					"Companies"
+				],
+				"summary": "Create New Company",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"description": "Company we want to create",
+						"schema": {
+							"$ref":"#/definitions/Company"
+						}
+					}
+				],
+				"produces":[
+					"application/json"
+				],
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Company"
+						}
+					},
+					"400":{
+						"description": "FAILED CREATE NEW COMPANY"
+					}
+				}
+			}
+		},
+		"/companies?{page}&{size}&{keyword}":{
+			"parameters": [
+				{
+					"name": "page",
+					"in": "query",
+					"required": true,
+					"description": "PAGE of the Company that we want use",
+					"type": "number"
+				},
+				{
+					"name": "size",
+					"in": "query",
+					"required": true,
+					"description": "SIZE of the Company that we want use",
+					"type": "number"
+				},
+				{
+					"name": "keyword",
+					"in": "query",
+					"required": false,
+					"description": "KEYWORD of the Company that we want use",
+					"type": "string"
+				}
+			],
+			"get": {
+				"tags":[
+					"Companies"
+				],
+				"summary": "Gel all Companies Paginated",
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Company"
+						}
+					}
+				}
+			}
+		},
+		"/companies/{id}":{
+			"parameters": [
+				{
+					"name": "id",
+					"in": "path",
+					"required": true,
+					"description": "ID of the Company that we want use",
+					"type": "string"
+				}
+			],
+			"get": {
+				"tags":[
+					"Companies"
+				],
+				"summary": "Get Company By ID",
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Company"
+						}
+					},
+					"404":{
+						"description": "FAILED COMPANY NOT FOUND"
+					}
+				}
+			},
+			"delete": {
+				"tags":[
+					"Companies"
+				],
+				"summary": "DELETE Company By ID",
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Company"
+						}
+					},
+					"404":{
+						"description": "FAILED COMPANY NOT FOUND"
+					},
+					"400":{
+						"description": "FAILED DELETE COMPANY"
+					}
+				}
+			}
+		}
+	}
+}

@@ -3,6 +3,6 @@ export default interface IDbRepository{
 	update(id:number, data:object);
 	delete(id:number);
 	get(id:number);
-	find();
+	findAll();
 	paginate(keyword:any, limit:number, offset:number);
 }

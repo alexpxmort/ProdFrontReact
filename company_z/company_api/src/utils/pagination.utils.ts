@@ -27,7 +27,7 @@ export default class Pagination {
 			 const currentPage = (this.page !== undefined && this.page >= 0) ? +this.page : 0;
 			 const totalPage = Math.ceil(total / this.limit);
 
-			 return {
+		return {
 	    total, data, totalPage, currentPage,
 	  };
 	}

@@ -1,4 +1,4 @@
-import { getRepository, ILike } from	'typeorm';
+import { getRepository} from	'typeorm';
 import { Request, Response } from 'express';
 import * as Yup from 'yup';
 import { Company } from '../entity/Company';
@@ -12,15 +12,26 @@ export const getCompanies = async (req:Request, res:Response) => {
   const { page, size } = query;
   const keyword = query.keyword || '';
 
-  const paginator = new Pagination(page, size);
+	if(page && size && keyword){
+		const paginator = new Pagination(page, size);
 
-  const [result, total] = await repo.paginate(
-    keyword, paginator.getLimit(), paginator.getOffSet(),
-  )
+		try{
+			const [result, total] = await repo.paginate(
+				keyword, paginator.getLimit(), paginator.getOffSet(),
+			)
 
-  const data = paginator.getPaginationData(result, total);
+			 let dataPaginated = paginator.getPaginationData(result, total);
 
-  return res.json(data);
+			 return res.json(dataPaginated);
+		}catch(err){
+			return res.status(400).json({msg:`Companies erro ${err.message}`,error:true})
+		}
+	}
+
+	let data = await repo.findAll();
+
+	return res.json(data);
+
 };
 
 export const saveCompany = async (req:Request, res:Response) => {
@@ -46,3 +57,33 @@ export const saveCompany = async (req:Request, res:Response) => {
     return res.status(400).json({ msg: 'Dados Inválidos', error: true, erros: errorMessages });
   }
 };
+
+export const findById = async (req:Request, res:Response) =>{
+
+	const {id} = req.params;
+	let company = await repo.get(+id);
+
+	if(company){
+		return res.status(200).json({company,error:false})
+	}else{
+		return res.status(404).json({msg:'Company Não Encontrada',error:true})
+	}
+}
+
+export const deleteCompany = async (req:Request, res:Response) =>{
+
+	const {id} = req.params;
+	let company = await repo.get(+id);
+
+	if(company){
+		try{
+			await repo.delete(+id);
+			return res.status(200).json({msg:`Company Deletada !`,error:false});
+		}catch(err){
+			return res.status(400).json({msg:`Erro ao deletar Company ${err.message}`,error:true})
+		}
+	}else{
+		return res.status(404).json({msg:'Company Não Encontrada',error:true})
+	}
+}
+

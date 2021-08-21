@@ -24,19 +24,19 @@ export default class CompanyRepository implements IDbRepository {
 	}
 
 	delete(id: number) {
-	  throw new Error('Method not implemented.');
+	  return this.getConnect().delete(id);
 	}
 
 	get(id: number) {
-	  return this.getConnect().find({
-	    where: {
-	      id,
-	    },
-	  })
+	  return this.getConnect().findOne(id);
 	}
 
-	find() {
-	  return this.getConnect().find();
+	findAll() {
+	  return this.getConnect().find({
+			order: {
+	      created_at: 'DESC',
+	    },
+		});
 	}
 
 	paginate(keyword:any, limit:number, offset:number) {
