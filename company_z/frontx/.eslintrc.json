@@ -6,8 +6,7 @@
 	"extends": [
 		"react-app",
 		"airbnb",
-		"plugin:@typescript-eslint/recommended",
-		"prettier/@typescript-eslint"
+		"plugin:@typescript-eslint/recommended"
 	],
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -26,7 +25,16 @@
 		  ],
 		  "import/prefer-default-export": "off",
 		  "@typescript-eslint/explicit-function-return-type": "off",
-		  "@typescript-eslint/explicit-member-accessibility": "off"
+		  "@typescript-eslint/explicit-member-accessibility": "off",
+			"no-use-before-define":"off",
+			"react/react-in-jsx-scope":"off",
+			"import/extensions":"off",
+			"react/prop-types":"off",
+			"react/destructuring-assignment":"off",
+			"@typescript-eslint/explicit-module-boundary-types":"off",
+			"react/jsx-props-no-spreading":"off",
+			"no-multiple-empty-lines":"off"
+
 	},
 	"settings": {
 		"import/parsers": {
