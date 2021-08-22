@@ -9,9 +9,9 @@ import {Route, Switch} from 'react-router-dom';
 import AddCompanyPage from '../pages/add/AddCompany';
 
 const Router:React.FC = () => (
-		 <Switch>
-				 <Route component={AddCompanyPage} path="/" />
-		 </Switch>
+	<Switch>
+		<Route component={AddCompanyPage} path="/" />
+	</Switch>
 );
 
 
