@@ -175,6 +175,40 @@
 						"description": "FAILED DELETE COMPANY"
 					}
 				}
+			},
+			"put": {
+				"tags": [
+					"Companies"
+				],
+				"summary": "Update Company BY id",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"description": "Company we want to update",
+						"schema": {
+							"$ref":"#/definitions/Company"
+						}
+					}
+				],
+				"produces":[
+					"application/json"
+				],
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Company"
+						}
+					},
+					"404":{
+						"description": "FAILED COMPANY NOT FOUND"
+					},
+					"400":{
+						"description": "FAILED DELETE COMPANY"
+					}
+				}
 			}
 		}
 	}

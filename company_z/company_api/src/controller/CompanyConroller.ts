@@ -5,6 +5,7 @@ import { Company } from '../entity/Company';
 import { schemaCompany } from '../validations/company.validation';
 import Pagination from '../utils/pagination.utils';
 import CompanyRepository from '../repositories/CompanyRepository'
+import { getData } from '../utils/body.utils';
 
 const repo = new CompanyRepository(getRepository, Company);
 export const getCompanies = async (req:Request, res:Response) => {
@@ -35,15 +36,51 @@ export const getCompanies = async (req:Request, res:Response) => {
 };
 
 export const saveCompany = async (req:Request, res:Response) => {
-  const { data } = req.body;
-  const dataObj = (data !== undefined && Object.keys(data).length > 0) ? data : req.body;
+	const dataObj = getData(req);
   try {
     await schemaCompany.validate(dataObj, { abortEarly: false });
     try {
       const company = await repo.save(dataObj);
       return res.status(200).json({ error: false, company });
     } catch (err) {
-      return res.status(200).json({ msg: `Erro ao criar company: ${err.message}`, error: true });
+      return res.status(400).json({ msg: `Erro ao criar company: ${err.message}`, error: true });
+    }
+  } catch (err) {
+    const errorMessages = {};
+
+    if (err instanceof Yup.ValidationError) {
+      err.inner.forEach((error) => {
+        errorMessages[error.path] = error.message;
+      });
+    }
+
+    return res.status(400).json({ msg: 'Dados Inválidos', error: true, erros: errorMessages });
+  }
+};
+
+export const updateCompany = async (req:Request, res:Response) => {
+  const {id} = req.params;
+  let company = await repo.get(+id);
+
+	if(!company){
+		return res.status(404).json({msg:'Company Não Encontrada',error:true})
+	}
+
+  const dataObj = getData(req);
+  try {
+    await schemaCompany.validate(dataObj, { abortEarly: false });
+    try {
+      const company = await repo.update(+id,dataObj);
+
+			if(company.affected === 1){
+				let updatedCompany = await repo.get(+id);
+				return res.status(200).json({ error: false, company:updatedCompany });
+			}else{
+				return res.status(400).json({ error: false, msg:'Company não atualizada' });
+			}
+      
+    } catch (err) {
+      return res.status(400).json({ msg: `Erro ao atualizar company: ${err.message}`, error: true });
     }
   } catch (err) {
     const errorMessages = {};

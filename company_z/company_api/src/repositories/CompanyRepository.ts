@@ -20,7 +20,7 @@ export default class CompanyRepository implements IDbRepository {
 	}
 
 	update(id: number, data: object) {
-	  throw new Error('Method not implemented.');
+	  return this.getConnect().update(id,data);
 	}
 
 	delete(id: number) {
