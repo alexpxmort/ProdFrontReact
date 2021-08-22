@@ -16,6 +16,7 @@
     "@types/react-dom": "^17.0.0",
     "@types/react-input-mask": "^3.0.1",
     "@types/react-router-dom": "^5.1.8",
+    "@types/styled-components": "^5.1.12",
     "@unform/core": "^2.1.6",
     "@unform/web": "^2.1.6",
     "axios": "^0.21.1",

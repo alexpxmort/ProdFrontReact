@@ -37,7 +37,10 @@
 			"no-tabs":"off",
 			"react/jsx-indent-props": "off",
 			"react/jsx-indent" : "off",
-			"object-curly-spacing": "off"
+			"object-curly-spacing": "off",
+			"react/no-array-index-key":"off",
+			"import/no-named-as-default":"off",
+			"global-require":"off"
 	},
 	"settings": {
 		"import/parsers": {

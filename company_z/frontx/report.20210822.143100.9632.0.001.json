@@ -1,0 +1,618 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20210822.143100.9632.0.001.json",
+    "dumpEventTime": "2021-08-22T14:31:01Z",
+    "dumpEventTimeStamp": "1629653461236",
+    "processId": 9632,
+    "cwd": "C:\\Users\\alex\\OneDrive\\Área de Trabalho\\2021\\node_teste\\ProdFrontReact\\company_z\\frontx",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "--max-old-space-size=2048",
+      "C:\\Users\\alex\\OneDrive\\Área de Trabalho\\2021\\node_teste\\ProdFrontReact\\company_z\\frontx\\node_modules\\fork-ts-checker-webpack-plugin\\lib\\service.js"
+    ],
+    "nodejsVersion": "v12.13.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.13.0",
+      "v8": "7.7.299.13-node.12",
+      "uv": "1.32.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "5",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1d",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "lts": "Erbium",
+      "headersUrl": "https://nodejs.org/download/release/v12.13.0/node-v12.13.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.13.0/node-v12.13.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.13.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.18363",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
+        "speed": 2904,
+        "user": 2204203,
+        "nice": 0,
+        "sys": 1913562,
+        "idle": 8068796,
+        "irq": 192765
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
+        "speed": 2904,
+        "user": 2124437,
+        "nice": 0,
+        "sys": 1419968,
+        "idle": 8641953,
+        "irq": 24343
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
+        "speed": 2904,
+        "user": 2643593,
+        "nice": 0,
+        "sys": 1647875,
+        "idle": 7894890,
+        "irq": 23812
+      },
+      {
+        "model": "Intel(R) Core(TM) i7-7500U CPU @ 2.70GHz",
+        "speed": 2904,
+        "user": 1885890,
+        "nice": 0,
+        "sys": 2419218,
+        "idle": 7881250,
+        "irq": 22484
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "vEthernet (Default Switch)",
+        "internal": false,
+        "mac": "00:15:5d:54:b9:68",
+        "address": "fe80::8dfb:7a4f:8d0e:61d4",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 17
+      },
+      {
+        "name": "vEthernet (Default Switch)",
+        "internal": false,
+        "mac": "00:15:5d:54:b9:68",
+        "address": "172.17.123.177",
+        "netmask": "255.255.255.240",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0e",
+        "address": "fe80::7077:f1a1:fb9e:acfd",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 14
+      },
+      {
+        "name": "VirtualBox Host-Only Network",
+        "internal": false,
+        "mac": "0a:00:27:00:00:0e",
+        "address": "192.168.56.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network #2",
+        "internal": false,
+        "mac": "0a:00:27:00:00:17",
+        "address": "fe80::98af:31be:3d5b:2119",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 23
+      },
+      {
+        "name": "VirtualBox Host-Only Network #2",
+        "internal": false,
+        "mac": "0a:00:27:00:00:17",
+        "address": "192.168.100.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network #3",
+        "internal": false,
+        "mac": "0a:00:27:00:00:02",
+        "address": "fe80::41f0:c17:5059:630a",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 2
+      },
+      {
+        "name": "VirtualBox Host-Only Network #3",
+        "internal": false,
+        "mac": "0a:00:27:00:00:02",
+        "address": "192.168.25.2",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network #25",
+        "internal": false,
+        "mac": "0a:00:27:00:00:1a",
+        "address": "fe80::4d08:8628:7b7a:2282",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 26
+      },
+      {
+        "name": "VirtualBox Host-Only Network #25",
+        "internal": false,
+        "mac": "0a:00:27:00:00:1a",
+        "address": "192.168.31.2",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "VirtualBox Host-Only Network #4",
+        "internal": false,
+        "mac": "0a:00:27:00:00:04",
+        "address": "fe80::fdbe:89fb:d0fd:df5",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 4
+      },
+      {
+        "name": "VirtualBox Host-Only Network #4",
+        "internal": false,
+        "mac": "0a:00:27:00:00:04",
+        "address": "192.168.143.1",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "b0:52:16:8f:2d:c9",
+        "address": "fe80::ed07:de0c:620d:8eeb",
+        "netmask": "ffff:ffff:ffff:ffff::",
+        "family": "IPv6",
+        "scopeid": 19
+      },
+      {
+        "name": "Wi-Fi",
+        "internal": false,
+        "mac": "b0:52:16:8f:2d:c9",
+        "address": "10.0.0.229",
+        "netmask": "255.255.255.0",
+        "family": "IPv4"
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "DESKTOP-25I8O94"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff653661389",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
+    },
+    {
+      "pc": "0x00007ff6536657cc",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28348"
+    },
+    {
+      "pc": "0x00007ff653664778",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+24168"
+    },
+    {
+      "pc": "0x00007ff65375332b",
+      "symbol": "v8::base::CPU::has_sse+37723"
+    },
+    {
+      "pc": "0x00007ff653f56f4e",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff653f3ef91",
+      "symbol": "v8::SharedArrayBuffer::Externalize+833"
+    },
+    {
+      "pc": "0x00007ff653e0c85c",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff653e17c00",
+      "symbol": "v8::internal::Heap::ProtectUnprotectedMemoryChunks+1312"
+    },
+    {
+      "pc": "0x00007ff653e14734",
+      "symbol": "v8::internal::Heap::PageFlagsAreConsistent+3204"
+    },
+    {
+      "pc": "0x00007ff653e09fc3",
+      "symbol": "v8::internal::Heap::CollectGarbage+1283"
+    },
+    {
+      "pc": "0x00007ff653e08794",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2356"
+    },
+    {
+      "pc": "0x00007ff653e29a65",
+      "symbol": "v8::internal::Factory::NewFillerObject+53"
+    },
+    {
+      "pc": "0x00007ff653b96239",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+4057"
+    },
+    {
+      "pc": "0x00007ff654382c6d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+567949"
+    },
+    {
+      "pc": "0x00007ff654383d71",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+572305"
+    },
+    {
+      "pc": "0x000003610e153e52",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2150977536,
+    "totalCommittedMemory": 2150977536,
+    "usedMemory": 2145407320,
+    "availableMemory": 49362544,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261872,
+        "used": 32296,
+        "available": 229576
+      },
+      "new_space": {
+        "memorySize": 2097152,
+        "committedMemory": 2097152,
+        "capacity": 1047488,
+        "used": 57728,
+        "available": 989760
+      },
+      "old_space": {
+        "memorySize": 1419096064,
+        "committedMemory": 1419096064,
+        "capacity": 1416899200,
+        "used": 1416641240,
+        "available": 257960
+      },
+      "code_space": {
+        "memorySize": 1998848,
+        "committedMemory": 1998848,
+        "capacity": 1541024,
+        "used": 1541024,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 790528,
+        "committedMemory": 790528,
+        "capacity": 563840,
+        "used": 563840,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 726683648,
+        "committedMemory": 726683648,
+        "capacity": 726567640,
+        "used": 726567640,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 49152,
+        "committedMemory": 49152,
+        "capacity": 3552,
+        "used": 3552,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 1047488,
+        "used": 0,
+        "available": 1047488
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 375.546,
+    "kernelCpuSeconds": 43.421,
+    "cpuConsumptionPercent": 55.2727,
+    "maxRss": 2294079488,
+    "pageFaults": {
+      "IORequired": 1208235,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 1518,
+      "writes": 9
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "ACLOCAL_PATH": "/mingw64/share/aclocal:/usr/share/aclocal",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "ANDROID_HOME": "C:\\Users\\alex\\AppData\\Local\\Android\\Sdk",
+    "APPDATA": "C:\\Users\\alex\\AppData\\Roaming",
+    "APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL": "true",
+    "AZ_HOME": "C:\\Users\\alex\\Desktop\\azcopy_windows_amd64_10.8.0",
+    "BABEL_ENV": "development",
+    "CHECK_SYNTACTIC_ERRORS": "true",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132565861646568200",
+    "CHROME_CRASHPAD_PIPE_NAME": "\\\\.\\pipe\\crashpad_9340_RPAOZBNRQUKLULQU",
+    "COLORTERM": "truecolor",
+    "COMMONPROGRAMFILES": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPILER_OPTIONS": "{}",
+    "COMPUTERNAME": "DESKTOP-25I8O94",
+    "COMSPEC": "C:\\WINDOWS\\system32\\cmd.exe",
+    "CONFIG_SITE": "/etc/config.site",
+    "CONTEXT": "C:\\Users\\alex\\OneDrive\\Área de Trabalho\\2021\\node_teste\\ProdFrontReact\\company_z\\frontx",
+    "DISPLAY": "needs-to-be-defined",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "ESLINT": "false",
+    "ESLINT_OPTIONS": "{}",
+    "EXEPATH": "C:\\Program Files\\Git\\bin",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "GIT_ASKPASS": "c:\\Users\\alex\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass.sh",
+    "GIT_SSH": "C:\\Program Files\\PuTTY\\plink",
+    "HOME": "C:\\Users\\alex",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\alex",
+    "HOSTNAME": "DESKTOP-25I8O94",
+    "INFOPATH": "/usr/local/info:/usr/share/info:/usr/info:/share/info",
+    "INIT_CWD": "C:\\Users\\alex\\OneDrive\\Área de Trabalho\\2021\\node_teste\\ProdFrontReact\\company_z\\frontx",
+    "JAVA_HOME": "C:\\Program Files\\Java\\jdk1.8.0_251\\",
+    "LANG": "pt_BR.UTF-8",
+    "LC_CTYPE": "pt_BR.UTF-8",
+    "LOCALAPPDATA": "C:\\Users\\alex\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-25I8O94",
+    "MAKE_HOME": "C:\\Program Files (x86)\\GnuWin32\\bin",
+    "MANPATH": "/mingw64/local/man:/mingw64/share/man:/usr/local/man:/usr/share/man:/usr/man:/share/man",
+    "MEMORY_LIMIT": "2048",
+    "MINGW_CHOST": "x86_64-w64-mingw32",
+    "MINGW_PACKAGE_PREFIX": "mingw-w64-x86_64",
+    "MINGW_PREFIX": "/mingw64",
+    "MSYSTEM": "MINGW64",
+    "MSYSTEM_CARCH": "x86_64",
+    "MSYSTEM_CHOST": "x86_64-w64-mingw32",
+    "MSYSTEM_PREFIX": "/mingw64",
+    "NODE": "C:\\Program Files\\nodejs\\node.exe",
+    "NODE_ENV": "development",
+    "NODE_HOME": "C:\\Users\\alex\\AppData\\Roaming\\npm",
+    "NODE_PATH": "",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"start\"],\"original\":[\"start\"]}",
+    "npm_config_bin_links": "true",
+    "npm_config_ignore_optional": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_init_license": "MIT",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "npm_config_user_agent": "yarn/1.22.4 npm/? node/v12.13.0 win32 x64",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_version_git_message": "v%s",
+    "npm_config_version_git_sign": "",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_tag_prefix": "v",
+    "npm_execpath": "C:\\Program Files (x86)\\Yarn\\bin\\yarn.js",
+    "npm_lifecycle_event": "start",
+    "npm_lifecycle_script": "react-scripts start",
+    "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+    "npm_package_browserslist_development_0": "last 1 chrome version",
+    "npm_package_browserslist_development_1": "last 1 firefox version",
+    "npm_package_browserslist_development_2": "last 1 safari version",
+    "npm_package_browserslist_production_0": ">0.2%",
+    "npm_package_browserslist_production_1": "not dead",
+    "npm_package_browserslist_production_2": "not op_mini all",
+    "npm_package_dependencies_axios": "^0.21.1",
+    "npm_package_dependencies_history": "^5.0.1",
+    "npm_package_dependencies_node_sass": "^6.0.1",
+    "npm_package_dependencies_react": "^17.0.2",
+    "npm_package_dependencies_react_bulma_components": "^4.0.7",
+    "npm_package_dependencies_react_dom": "^17.0.2",
+    "npm_package_dependencies_react_hook_form": "^7.13.0",
+    "npm_package_dependencies_react_input_mask": "^2.0.4",
+    "npm_package_dependencies_react_redux": "^7.2.4",
+    "npm_package_dependencies_react_router_dom": "^5.2.0",
+    "npm_package_dependencies_react_scripts": "4.0.3",
+    "npm_package_dependencies_redux": "^4.1.1",
+    "npm_package_dependencies_redux_saga": "^1.1.3",
+    "npm_package_dependencies_styled_components": "^5.3.0",
+    "npm_package_dependencies_swr": "^0.5.6",
+    "npm_package_dependencies_typescript": "3.4.5",
+    "npm_package_dependencies_web_vitals": "^1.0.1",
+    "npm_package_dependencies_yup": "^0.32.9",
+    "npm_package_dependencies__hookform_resolvers": "^2.8.0",
+    "npm_package_dependencies__material_ui_core": "^4.12.3",
+    "npm_package_dependencies__material_ui_icons": "^4.11.2",
+    "npm_package_dependencies__testing_library_jest_dom": "^5.11.4",
+    "npm_package_dependencies__testing_library_react": "^11.1.0",
+    "npm_package_dependencies__testing_library_user_event": "^12.1.10",
+    "npm_package_dependencies__types_jest": "^26.0.15",
+    "npm_package_dependencies__types_node": "^12.0.0",
+    "npm_package_dependencies__types_react": "^17.0.0",
+    "npm_package_dependencies__types_react_dom": "^17.0.0",
+    "npm_package_dependencies__types_react_input_mask": "^3.0.1",
+    "npm_package_dependencies__types_react_router_dom": "^5.1.8",
+    "npm_package_dependencies__types_styled_components": "^5.1.12",
+    "npm_package_dependencies__unform_core": "^2.1.6",
+    "npm_package_dependencies__unform_web": "^2.1.6",
+    "npm_package_description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+    "npm_package_devDependencies_eslint": "^7.11.0",
+    "npm_package_devDependencies_eslint_config_airbnb": "^18.2.1",
+    "npm_package_devDependencies_eslint_config_prettier": "^8.3.0",
+    "npm_package_devDependencies_eslint_import_resolver_typescript": "^2.4.0",
+    "npm_package_devDependencies_eslint_plugin_import": "^2.24.1",
+    "npm_package_devDependencies_eslint_plugin_jsx_a11y": "^6.4.1",
+    "npm_package_devDependencies_eslint_plugin_prettier": "^3.4.0",
+    "npm_package_devDependencies_eslint_plugin_react": "^7.24.0",
+    "npm_package_devDependencies_prettier": "^2.3.2",
+    "npm_package_devDependencies__typescript_eslint_eslint_plugin": "^4.29.2",
+    "npm_package_devDependencies__typescript_eslint_parser": "^4.29.2",
+    "npm_package_devDependencies__types_react_redux": "^7.1.18",
+    "npm_package_license": "MIT",
+    "npm_package_name": "front",
+    "npm_package_private": "true",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_scripts_build": "react-scripts build",
+    "npm_package_scripts_eject": "react-scripts eject",
+    "npm_package_scripts_lint_fix": "eslint --fix --ext .ts,.tsx .",
+    "npm_package_scripts_start": "react-scripts start",
+    "npm_package_scripts_test": "react-scripts test",
+    "npm_package_version": "0.1.0",
+    "NUMBER_OF_PROCESSORS": "4",
+    "NVM_HOME": "C:\\Users\\alex\\AppData\\Roaming\\nvm",
+    "NVM_SYMLINK": "C:\\Program Files\\nodejs",
+    "OLDPWD": "C:/Users/alex",
+    "OneDrive": "C:\\Users\\alex\\OneDrive",
+    "OneDriveConsumer": "C:\\Users\\alex\\OneDrive",
+    "ORIGINAL_PATH": "C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\alex\\bin;C:\\Python27;C:\\Python27\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\Program Files (x86)\\Yarn\\bin;C:\\xamppY\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\PuTTY;C:\\Users\\alex\\Desktop\\azcopy_windows_amd64_10.8.0;C:\\Program Files (x86)\\GnuWin32\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\alex\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Program Files\\nodejs;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Redis;C:\\Program Files\\Git\\cmd;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin;C:\\Users\\alex\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\alex\\AppData\\Local\\Yarn\\bin;C:\\xamppY\\apache\\bin;C:\\Program Files\\Java\\jdk1.8.0_251\\jre;C:\\Python27;C:\\Users\\alex\\AppData\\Local\\Android\\Sdk;C:\\Users\\alex\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\xamppY\\php;C:\\Program Files\\heroku\\bin;C:\\Users\\alex\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\alex\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\alex\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\alex\\AppData\\Roaming\\npm",
+    "ORIGINAL_TEMP": "C:/Users/alex/AppData/Local/Temp",
+    "ORIGINAL_TMP": "C:/Users/alex/AppData/Local/Temp",
+    "ORIGINAL_XDG_CURRENT_DESKTOP": "undefined",
+    "OS": "Windows_NT",
+    "PATH": "C:\\Users\\alex\\AppData\\Local\\Temp\\yarn--1629652624222-0.7891349797271006;C:\\Users\\alex\\OneDrive\\Área de Trabalho\\2021\\node_teste\\ProdFrontReact\\company_z\\frontx\\node_modules\\.bin;C:\\Users\\alex\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Users\\alex\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\local\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Program Files\\Git\\mingw64\\bin;C:\\Program Files\\Git\\usr\\bin;C:\\Users\\alex\\bin;C:\\Python27;C:\\Python27\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\Program Files\\ImageMagick-7.0.10-Q16-HDRI;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0;C:\\Program Files (x86)\\Yarn\\bin;C:\\xamppY\\php;C:\\ProgramData\\ComposerSetup\\bin;C:\\WINDOWS\\System32\\OpenSSH;C:\\Program Files\\PuTTY;C:\\Users\\alex\\Desktop\\azcopy_windows_amd64_10.8.0;C:\\Program Files (x86)\\GnuWin32\\bin;C:\\ProgramData\\chocolatey\\bin;C:\\Users\\alex\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Program Files\\nodejs;C:\\Program Files\\Docker\\Docker\\resources\\bin;C:\\ProgramData\\DockerDesktop\\version-bin;C:\\Program Files\\Redis;C:\\Program Files\\Git\\cmd;C:\\Program Files\\MySQL\\MySQL Shell 8.0\\bin;C:\\Users\\alex\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\alex\\AppData\\Local\\Yarn\\bin;C:\\xamppY\\apache\\bin;C:\\Program Files\\Java\\jdk1.8.0_251\\jre;C:\\Python27;C:\\Users\\alex\\AppData\\Local\\Android\\Sdk;C:\\Users\\alex\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\xamppY\\php;C:\\Program Files\\heroku\\bin;C:\\Users\\alex\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\alex\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\alex\\AppData\\Roaming\\nvm;C:\\Program Files\\nodejs;C:\\Users\\alex\\AppData\\Roaming\\npm;C:\\Program Files\\Git\\usr\\bin\\vendor_perl;C:\\Program Files\\Git\\usr\\bin\\core_perl",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "PKG_CONFIG_PATH": "/mingw64/lib/pkgconfig:/mingw64/share/pkgconfig",
+    "PLINK_PROTOCOL": "ssh",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 142 Stepping 9, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "8e09",
+    "ProgramData": "C:\\ProgramData",
+    "PROGRAMFILES": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules\\",
+    "PUBLIC": "C:\\Users\\Public",
+    "PWD": "/c/Users/alex/OneDrive/Área de Trabalho/2021/node_teste/ProdFrontReact/company_z/frontx",
+    "SESSIONNAME": "Console",
+    "SHELL": "C:\\Program Files\\Git\\usr\\bin\\bash.exe",
+    "SHLVL": "4",
+    "SSH_ASKPASS": "C:/Program Files/Git/mingw64/libexec/git-core/git-gui--askpass",
+    "SYSTEMDRIVE": "C:",
+    "SYSTEMROOT": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\alex\\AppData\\Local\\Temp",
+    "TERM_PROGRAM": "vscode",
+    "TERM_PROGRAM_VERSION": "1.59.1",
+    "TMP": "C:\\Users\\alex\\AppData\\Local\\Temp",
+    "TMPDIR": "C:\\Users\\alex\\AppData\\Local\\Temp",
+    "TSCONFIG": "C:\\Users\\alex\\OneDrive\\Área de Trabalho\\2021\\node_teste\\ProdFrontReact\\company_z\\frontx\\tsconfig.json",
+    "TYPESCRIPT_PATH": "C:\\Users\\alex\\OneDrive\\Área de Trabalho\\2021\\node_teste\\ProdFrontReact\\company_z\\frontx\\node_modules\\typescript\\lib\\typescript.js",
+    "USERDOMAIN": "DESKTOP-25I8O94",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-25I8O94",
+    "USERNAME": "alex",
+    "USERPROFILE": "C:\\Users\\alex",
+    "USE_INCREMENTAL_API": "true",
+    "VBOX_MSI_INSTALL_PATH": "C:\\Program Files\\Oracle\\VirtualBox\\",
+    "VSCODE_GIT_ASKPASS_MAIN": "c:\\Users\\alex\\AppData\\Local\\Programs\\Microsoft VS Code\\resources\\app\\extensions\\git\\dist\\askpass-main.js",
+    "VSCODE_GIT_ASKPASS_NODE": "C:\\Users\\alex\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe",
+    "VSCODE_GIT_IPC_HANDLE": "\\\\.\\pipe\\vscode-git-40a3909f58-sock",
+    "VUE": "{\"compiler\":\"vue-template-compiler\",\"enabled\":false}",
+    "WEBPACK_DEV_SERVER": "true",
+    "WINDIR": "C:\\WINDOWS",
+    "XDEBUG_CONFIG": "idekey=VSCODE",
+    "YARN_WRAP_OUTPUT": "false",
+    "_": "/usr/bin/winpty"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\System32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\UMPDC.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\system32\\wshbth.dll"
+  ]
+}
