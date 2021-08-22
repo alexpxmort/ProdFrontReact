@@ -1,4 +1,4 @@
-import { getRepository} from	'typeorm';
+import { getRepository,createConnection} from	'typeorm';
 import { Request, Response } from 'express';
 import * as Yup from 'yup';
 import { Company } from '../entity/Company';
@@ -6,6 +6,8 @@ import { schemaCompany } from '../validations/company.validation';
 import Pagination from '../utils/pagination.utils';
 import CompanyRepository from '../repositories/CompanyRepository'
 import { getData } from '../utils/body.utils';
+
+createConnection();
 
 const repo = new CompanyRepository(getRepository, Company);
 export const getCompanies = async (req:Request, res:Response) => {
@@ -36,7 +38,7 @@ export const getCompanies = async (req:Request, res:Response) => {
 };
 
 export const saveCompany = async (req:Request, res:Response) => {
-	const dataObj = getData(req);
+ const dataObj = getData(req);
   try {
     await schemaCompany.validate(dataObj, { abortEarly: false });
     try {
@@ -74,7 +76,7 @@ export const updateCompany = async (req:Request, res:Response) => {
 
 			if(company.affected === 1){
 				let updatedCompany = await repo.get(+id);
-				return res.status(200).json({ error: false, company:updatedCompany });
+				return res.status(200).json({ error: false,company:updatedCompany });
 			}else{
 				return res.status(400).json({ error: false, msg:'Company não atualizada' });
 			}
