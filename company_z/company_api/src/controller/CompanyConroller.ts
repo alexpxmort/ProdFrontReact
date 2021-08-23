@@ -6,6 +6,7 @@ import { schemaCompany } from '../validations/company.validation';
 import Pagination from '../utils/pagination.utils';
 import CompanyRepository from '../repositories/CompanyRepository'
 import { getData } from '../utils/body.utils';
+import { validateCnpj } from '../utils/validador';
 
 createConnection();
 
@@ -42,6 +43,10 @@ export const saveCompany = async (req:Request, res:Response) => {
   try {
     await schemaCompany.validate(dataObj, { abortEarly: false });
     try {
+			if(!validateCnpj(dataObj.cnpj)){
+				return res.status(400).json({ error: false, msg:'Cnpj Inválido!Insira um Cnpj válido' });
+			}
+
       const company = await repo.save(dataObj);
       return res.status(200).json({ error: false, company });
     } catch (err) {
@@ -68,10 +73,16 @@ export const updateCompany = async (req:Request, res:Response) => {
 		return res.status(404).json({msg:'Company Não Encontrada',error:true})
 	}
 
+
   const dataObj = getData(req);
   try {
     await schemaCompany.validate(dataObj, { abortEarly: false });
     try {
+
+			if(!validateCnpj(dataObj.cnpj)){
+				return res.status(400).json({ error: false, msg:'Cnpj Inválido!Insira um Cnpj válido' });
+			}
+
       const company = await repo.update(+id,dataObj);
 
 			if(company.affected === 1){
@@ -80,7 +91,7 @@ export const updateCompany = async (req:Request, res:Response) => {
 			}else{
 				return res.status(400).json({ error: false, msg:'Company não atualizada' });
 			}
-      
+
     } catch (err) {
       return res.status(400).json({ msg: `Erro ao atualizar company: ${err.message}`, error: true });
     }

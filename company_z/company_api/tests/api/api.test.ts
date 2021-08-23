@@ -7,7 +7,7 @@ let connection:Connection;
 let companyTest:any;
 
 beforeEach(async ()=>{
- 
+
 	const entities = path.join(__dirname,'./../../src/entity/*.ts');
 
 	const mockConnection = await createConnection({
@@ -39,34 +39,51 @@ describe ('Test Company API', () => {
 	it('Should CREATE a NEW Company', async () => {
 		let data = {
 			nome: 'Nova Empresa',
-			cnpj: '15151561',
-			demanda: 1000.00,
+			cnpj: '42518007000140',
+			demanda: 100000005,
 			faturamento: 'Até R$ 10 milhões;',
 			sobre: 'Empresa do futuro',
 		};
 
 		const res = await supertest(app).post('/companies').send(data);
+		expect(res.statusCode).toEqual(200);
+
 		let json = JSON.parse(res.text);
 		companyTest = json.company;
 
-		expect(res.statusCode).toEqual(200);
 	});
 
-	
+
 	it('Should UPDATE an existing Company', async () => {
 		let data = {
 			nome: 'Nova Empresa Atualizada',
-			cnpj: '15151561',
-			demanda: 200,
+			cnpj: '42518007000140',
+			demanda: 100000000,
 			faturamento: 'Até R$ 10 milhões;',
 			sobre: 'Empresa do futuro',
 		};
 
 		const res = await supertest(app).put(`/companies/${companyTest.id}`).send(data);
+		expect(res.statusCode).toEqual(200);
+
 		let json = JSON.parse(res.text);
 		companyTest = json.company;
 
-		expect(res.statusCode).toEqual(200);
+	});
+
+	it('Should FAIL WITH WRONG Cnpj', async () => {
+		let data = {
+			nome: 'Nova Empresa Atualizada',
+			cnpj: '1234567894561235',
+			demanda: 100000000,
+			faturamento: 'Até R$ 10 milhões;',
+			sobre: 'Empresa do futuro',
+		};
+
+		const res = await supertest(app).put(`/companies/${companyTest.id}`).send(data);
+		expect(res.statusCode).toEqual(400);
+		let json = JSON.parse(res.text);
+		expect(json.msg).toEqual('Cnpj Inválido!Insira um Cnpj válido');
 	});
 
 	it('Should GET All Companies BY KEYWORD', async () => {
@@ -87,5 +104,5 @@ describe ('Test Company API', () => {
 		const res = await supertest(app).delete(`/companies/${companyTest.id}`);
 		expect(res.statusCode).toEqual(200);
 	});
-	
+
 });
