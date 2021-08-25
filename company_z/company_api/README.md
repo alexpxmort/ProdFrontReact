@@ -1,7 +1,8 @@
-# Awesome Project Build with TypeORM
+Para rodar o projeto siga os seguintes passos:
+1. Rode `npm i ou yarn install` 
+2. Mude sua conexão de banco de dados no arquivo `ormconfig.json` 
+3. Rode `yarn dev ou npm run dev` 
 
-Steps to run this project:
+E para ver a documentação do swagger:
 
-1. Run `npm i` command
-2. Setup database settings inside `ormconfig.json` file
-3. Run `npm start` command
+acesse [http://localhost:3333/swagger](http://localhost:3333/swagger)
