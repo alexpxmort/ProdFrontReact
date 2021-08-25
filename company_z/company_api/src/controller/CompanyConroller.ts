@@ -16,7 +16,7 @@ export const getCompanies = async (req:Request, res:Response) => {
   const { page, size } = query;
   const keyword = query.keyword || '';
 
-	if(page && size && keyword){
+	if(page && size){
 		const paginator = new Pagination(page, size);
 
 		try{
@@ -44,7 +44,7 @@ export const saveCompany = async (req:Request, res:Response) => {
     await schemaCompany.validate(dataObj, { abortEarly: false });
     try {
 			if(!validateCnpj(dataObj.cnpj)){
-				return res.status(400).json({ error: false, msg:'Cnpj Inválido!Insira um Cnpj válido' });
+				return res.status(400).json({ error: true, msg:'Cnpj Inválido!Insira um Cnpj válido' });
 			}
 
       const company = await repo.save(dataObj);
@@ -80,7 +80,7 @@ export const updateCompany = async (req:Request, res:Response) => {
     try {
 
 			if(!validateCnpj(dataObj.cnpj)){
-				return res.status(400).json({ error: false, msg:'Cnpj Inválido!Insira um Cnpj válido' });
+				return res.status(400).json({ error: true, msg:'Cnpj Inválido!Insira um Cnpj válido' });
 			}
 
       const company = await repo.update(+id,dataObj);
