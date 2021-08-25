@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams, withRouter } from 'react-router-dom';
 import * as Yup from 'yup';
-import {withRouter } from 'react-router-dom';
 import FormCustomCompany from '../../components/form/company.form';
+import Spinner from '../../components/loading';
 import Message from '../../components/msg_alerts/msg_alerts.component';
 import { api } from '../../requests/api/api';
 import VALUES from '../../utils/faturamento.utils';
@@ -9,30 +10,43 @@ import { validateCnpj } from '../../utils/validator';
 import { schemaCompany } from '../../validations/company.validation';
 
 
-const initialData = {
+let initialData = {
   nome: '',
   cnpj: '',
   demanda: '',
   sobre: '',
 };
 
-const AddCompanyPage:React.FC = ({history}) => {
+const EditCompanyPage:React.FC = ({history}) => {
   const id = 'company_form';
-  const formAddRef = useRef(null);
+  const formEditRef = useRef(null);
+  const params = useParams();
 
   const [options, setOptions] = useState(VALUES);
   const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(true);
   const [disabled, setDisabled] = useState(false);
 
+  useEffect(async () => {
+    const resp = await api.get(`companies/${params.id}`);
+    initialData = resp.data.company;
+    initialData.faturamento = {label: initialData.faturamento, value: initialData.faturamento};
+    setLoading(false);
+  }, []);
 
-  const create = async (data) => {
+  if (loading) {
+    return <Spinner />;
+  }
+
+
+  const update = async (data) => {
     try {
-      const resp = await api.post('companies', data);
+      const resp = await api.put(`companies/${params.id}`, data);
 
       if (!resp.error) {
-        Message('Company criada com Sucesso!', 'success');
+        Message('Company atualizada com Sucesso!', 'success');
 
-        setDisabled(true);
+				 setDisabled(true);
 
         setTimeout(() => {
           history.push('/');
@@ -51,8 +65,8 @@ const AddCompanyPage:React.FC = ({history}) => {
       await schemaCompany.validate(data, { abortEarly: false });
 
 
-      if (formAddRef) {
-        formAddRef.current.setErrors({});
+      if (formEditRef) {
+        formEditRef.current.setErrors({});
       }
 
 
@@ -60,7 +74,7 @@ const AddCompanyPage:React.FC = ({history}) => {
         Message('Cnpj Inválido!', 'warning');
         return false;
       }
-      await create(data);
+      await update(data);
     } catch (err) {
       const errorMessages = {};
 
@@ -70,8 +84,8 @@ const AddCompanyPage:React.FC = ({history}) => {
         });
       }
 
-      if (formAddRef) {
-        formAddRef.current.setErrors(errorMessages);
+      if (formEditRef) {
+        formEditRef.current.setErrors(errorMessages);
       }
     }
 
@@ -79,7 +93,7 @@ const AddCompanyPage:React.FC = ({history}) => {
   };
 
   return (
-        <FormCustomCompany disabled={disabled} ref={formAddRef} id={id} options={options} initialData={initialData} handleSubmit={handleSubmit} />
+        <FormCustomCompany disabled={disabled} ref={formEditRef} id={id} options={options} initialData={initialData} handleSubmit={handleSubmit} />
   );
 };
-export default withRouter(AddCompanyPage);
+export default withRouter(EditCompanyPage);

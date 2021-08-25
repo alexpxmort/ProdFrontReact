@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
     "target": "es6",
-		"removeComments": true,
-		"outDir": "./dist",
+    "removeComments": true,
+    "outDir": "./dist",
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -11,12 +11,17 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
-		"preserveConstEnums": true,
+    "preserveConstEnums": true,
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react"
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
   },
   "include": [
     "./src/**/*"

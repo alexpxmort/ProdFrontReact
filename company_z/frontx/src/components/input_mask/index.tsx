@@ -5,6 +5,7 @@ import {TextField} from '@material-ui/core';
 import ReactInputMask, { Props as InputProps } from 'react-input-mask';
 
 import { useField } from '@unform/core';
+import { Alert } from '@material-ui/lab';
 
 interface Props extends InputProps {
 
@@ -41,13 +42,13 @@ export default function InputMask({ name, ...rest }: Props) {
 
   return (
 
-
-
-    <ReactInputMask ref={inputRef} defaultValue={defaultValue} {...rest}>
-        {(inputProps) => (
-			<TextField variant="outlined" {...inputProps} {...rest} />
-        )}
-    </ReactInputMask>
-
+		<div>
+				<ReactInputMask ref={inputRef} defaultValue={defaultValue} {...rest}>
+						{(inputProps) => (
+						<TextField variant="outlined" {...inputProps} {...rest} />
+						)}
+				</ReactInputMask>
+				{error && <Alert severity="warning">{error}</Alert>}
+		</div>
   );
 }

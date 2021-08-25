@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const HeaderContainer = styled.div`
     height: 70px;
-    width: 100%;
+    width: 100vw;
     display: flex;
     justify-content: space-between;
     margin-bottom: 25px;
@@ -13,7 +13,7 @@ export const HeaderContainer = styled.div`
 export const LogoContainer = styled(Link)`
     height: 100px;
     width: 75px;
-    padding: 15px;  
+    padding: 15px;
 `;
 
 export const Logo = styled.img`
@@ -32,4 +32,5 @@ export const OptionLink = styled(Link)`
     padding: 10px 15px;
     cursor: pointer;
     color:#FFF;
+		margin-right:5vh;
 `;

@@ -1,0 +1,41 @@
+
+.pagination{
+	display:flex;
+	padding-left:0;
+	list-style:none;
+	border-radius: .25rem;
+	flex-wrap: wrap;
+
+	.pagination-list{
+		align-items:center;
+		display:flex;
+		justify-content:center;
+		text-align:center;
+
+
+		li{
+			list-style: none;
+			position: relative;
+			display: block;
+			padding: .5rem .75rem;
+			margin-left: -1px;
+			line-height: 1.25;
+			color:'#007bff';
+			background-color: '#fff';
+			border: 1px solid #dee2e6;
+		}
+
+		.active{
+			background-color:#007bff;
+		}
+
+		li:hover{
+			cursor: pointer;
+			background-color: #888;
+		}
+
+		.page-link{
+
+		}
+	}
+}

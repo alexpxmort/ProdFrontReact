@@ -40,7 +40,14 @@
 			"object-curly-spacing": "off",
 			"react/no-array-index-key":"off",
 			"import/no-named-as-default":"off",
-			"global-require":"off"
+			"global-require":"off",
+			"max-len":"off",
+			"react/jsx-props-no-multi-spaces":"off",
+			"react/jsx-props-no-multi-spaces":"off",
+			"no-mixed-spaces-and-tabs":"off",
+			"no-underscore-dangle":"off",
+			"no-nested-ternary":"off",
+			"no-param-reassign":"off"
 	},
 	"settings": {
 		"import/parsers": {

@@ -1,15 +1,15 @@
 
 import React from 'react';
+import {withRouter} from 'react-router-dom';
 import {
   HeaderContainer, OptionsContainer, OptionLink, LogoContainer, Logo,
 } from './header.styles';
 
-
 import uri from '../../images/logo.png';
 
-const Header:React.FC = () => (
+const Header:React.FC = ({history}) => (
 	<HeaderContainer>
-		<LogoContainer>
+		<LogoContainer onClick={() => history.push('/')}>
 			<Logo alt="img" src={uri} />
   </LogoContainer>
 		<OptionsContainer>
@@ -21,4 +21,4 @@ const Header:React.FC = () => (
 );
 
 
-export default Header;
+export default withRouter(Header);

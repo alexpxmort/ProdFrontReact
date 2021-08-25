@@ -1,0 +1,18 @@
+.CUSTOM_CLASS__control {
+    max-width: 500px;
+
+ }
+
+
+ @media screen and (max-width: 800px) {
+     .CUSTOM_CLASS__control{
+         width: 300px;
+     }
+ }
+
+
+ @media (max-width: 1024px) and (min-width: 800px) {
+     .CUSTOM_CLASS__control{
+        width: 450px;
+     }
+ }
