@@ -1,0 +1,231 @@
+{
+	"swagger":"2.0",
+	"info":{
+		"version":"1.0.0",
+		"title":"Class API",
+		"description":"API de Class",
+		"license":{
+			"name":"MIT",
+			"url":"https://opensource.org/license/MIT"
+		}
+	},
+	"host": "localhost:3333",
+	"basePath": "",
+	"schemes": [
+		"http",
+		"https"
+	],
+	"tags": [
+		{
+			"name": "Class",
+			"description": "API de Class"
+		}
+	],
+	"definitions": {
+		"User":{
+			"properties": {
+				"name":{
+					"type":"string"
+					},
+					"email":{
+						"type":"string"
+					},
+					"password":{
+						"type":"string"
+					}
+			}
+		},
+		"Classe":{
+			"properties": {
+				"name":{
+					"type":"string"
+					},
+					"description":{
+						"type":"string"
+					},
+					"video":{
+						"type":"string"
+					},
+					"data_init":{
+						"type":"string"
+					},
+					"data_end":{
+						"type":"string"
+					},
+					"total_comments":{
+						"type":"number"
+					}
+			}
+		},
+		"LoginReq":{
+			"properties": {
+					"email":{
+						"type":"string"
+					},
+					"password":{
+						"type":"string"
+					}
+			}
+		},
+		"Comment":{
+			"properties": {
+					"id_class":{
+						"type":"string"
+					},
+					"comment":{
+						"type":"string"
+					}
+			}
+		}
+	},
+	"paths": {
+		"/users":{
+			"post": {
+				"tags": [
+					"Login"
+				],
+				"summary": "User Login",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"description": "Login of users",
+						"schema": {
+							"$ref":"#/definitions/LoginReq"
+						}
+					}
+				],
+				"produces":[
+					"application/json"
+				],
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/User"
+						}
+					},
+					"401":{
+						"description": "FAILED LOGIN USER"
+					}
+				}
+			}
+		},
+		"/classes":{
+			"post": {
+				"tags": [
+					"Classes"
+				],
+				"summary": "Create Classe",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"description": "Create a New Classe",
+						"schema": {
+							"$ref":"#/definitions/Classe"
+						}
+					}
+				],
+				"produces":[
+					"application/json"
+				],
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Classe"
+						}
+					},
+					"400":{
+						"description": "FAILED CREATE CLASSE"
+					}
+				}
+			}
+		},
+		"/classes/comments":{
+			"post": {
+				"tags": [
+					"Comments"
+				],
+				"summary": "Create Comment",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"description": "Create a New Comment",
+						"schema": {
+							"$ref":"#/definitions/Comment"
+						}
+					}
+				],
+				"produces":[
+					"application/json"
+				],
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Comment"
+						}
+					},
+					"400":{
+						"description": "FAILED CREATE Comment"
+					},
+					"404":{
+						"description": "NOT FOUND CLASSE"
+					}
+				}
+			}
+		},
+		"/classes/{id}":{
+			"parameters": [
+				{
+					"name": "id",
+					"in": "path",
+					"required": true,
+					"description": "ID of the Classe that we want use",
+					"type": "string"
+				}
+			],
+			"get": {
+				"tags":[
+					"Classes"
+				],
+				"summary": "Get Classe By ID",
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Classe"
+						}
+					},
+					"404":{
+						"description": "FAILED Classe NOT FOUND"
+					}
+				}
+			},
+			"delete": {
+				"tags":[
+					"Classes"
+				],
+				"summary": "Delete Classe By ID",
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Classe"
+						}
+					},
+					"404":{
+						"description": "FAILED Classe NOT FOUND"
+					}
+				}
+			}
+		}
+	}
+
+}
