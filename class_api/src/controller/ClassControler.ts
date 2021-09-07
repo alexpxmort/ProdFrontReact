@@ -1,20 +1,26 @@
-import {getRepository} from "typeorm";
+import {getMongoRepository, getRepository} from "typeorm";
+import {ObjectID} from 'mongodb';
 import {Request, Response} from "express";
 import { Classe } from "../app/models/Classe";
 import { Comment } from "../app/models/Comment";
 import '../database/connect';
-import ClassRepository from '../database/repositories/CommentRepository';
+import ClassRepository from '../database/repositories/ClassRepository';
+import CommentsRepository from '../database/repositories/CommentRepository';
 import { schemaClass } from '../validations/class.validation';
 import * as Yup from 'yup';
 import Pagination from '../utils/pagination.utils';
 import { ClasseDTO } from '../dto/ClasseDTO';
+import { User } from '../app/models/User';
 
 
 
 
 export class ClassController {
 
-    private classRepository = new ClassRepository(getRepository,Classe);
+    private classRepository = new ClassRepository(getMongoRepository,Classe);
+		private commentsRepository = new CommentsRepository(getMongoRepository,Comment);
+
+
 
     async create(request: Request, response: Response) {
 			let {body} = request;
@@ -22,6 +28,10 @@ export class ClassController {
 			try {
 				await schemaClass.validate(body, { abortEarly: false });
 				try {
+
+					if(!body.hasOwnProperty('totalComments')){
+						body.totalComments = 0;
+					}
 
 					const classe = await this.classRepository.save(body);
 					return response.status(200).json({ error: false, classe });
@@ -53,7 +63,7 @@ export class ClassController {
 
 					const {id} = params;
 
-					let classe = await this.classRepository.get(id);
+					let classe = await this.classRepository.get(new ObjectID(id));
 
 					if(!classe){
 						return response.status(404).json({error:true,msg:'Classe Not Found!'});
@@ -99,19 +109,15 @@ export class ClassController {
 				}
 			}
 
-			let data =  await getRepository(Classe).find({
-				relations: ['comments'],
-				order: {
-					created_at: 'DESC'
-				}
-			});
+			let data =  await this.classRepository.findAll();
 
-			data.forEach((val:ClasseDTO)=>{
-				if(val.comments.length > 0){
-					val.last_comment = val.comments[val.comments.length - 1].comment;
-					val.last_comment_date = val.comments[val.comments.length - 1].created_at;
-				}
-			})
+
+			// data.forEach((val:ClasseDTO)=>{
+			// 	// if(val.comments.length > 0){
+			// 	// 	val.last_comment = val.comments[val.comments.length - 1].comment;
+			// 	// 	val.last_comment_date = val.comments[val.comments.length - 1].created_at;
+			// 	// }
+			// })
 
 			return res.status(200).json({error:false,data});
 
@@ -121,18 +127,16 @@ export class ClassController {
 			let{params} = request;
 			let {id} = params;
 
-			let classe = await getRepository(Classe).findOne(id,{
-				relations:['comments']
-			});
+			let classe = await this.classRepository.get(new ObjectID(id));
 
 			if(!classe){
 				return response.status(404).json({error:true,msg:'Classe Not Found!'});
 			}
 
-			classe.comments.sort((a:Comment,b:Comment) => {
-				return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
-			});
-			classe.comments = classe.comments.slice(0,3);
+			// classe.comments.sort((a:Comment,b:Comment) => {
+			// 	return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+			// });
+			// classe.comments = classe.comments.slice(0,3);
 
 			return response.status(200).json({ error: false, classe });
 
@@ -144,14 +148,14 @@ export class ClassController {
 			let{params} = request;
 			let {id} = params;
 
-			let classe = await this.classRepository.get(id);
+			let classe = await this.classRepository.get(new ObjectID(id));
 
 			if(!classe){
 				return response.status(404).json({error:true,msg:'Classe Not Found!'});
 			}
 
 			try{
-				await this.classRepository.delete(id);
+				await this.classRepository.delete(new ObjectID(id));
 				return response.status(200).json({error:false,msg:`Classe Removida com Sucesso!`});
 
 			}catch(err){

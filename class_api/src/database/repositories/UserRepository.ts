@@ -1,4 +1,4 @@
-import { ILike } from 'typeorm';
+import { ILike, ObjectID } from 'typeorm';
 import IDbRepository from './IDbRepository';
 import { User } from '../../app/models/User';
 
@@ -20,21 +20,21 @@ export default class UserRepository implements IDbRepository  {
 	 return this.getConnect().save(data);
 	}
 
-	update(id: string, data: object) {
+	update(id: ObjectID, data: object) {
 	  return this.getConnect().update(id,data);
 	}
 
-	delete(id: string) {
+	delete(id: ObjectID) {
 	  return this.getConnect().delete(id);
 	}
 
-	get(id: string) {
+	get(id: ObjectID) {
 	  return this.getConnect().findOne(id);
 	}
 
-	findByEmail(email:string):User {
-	  return this.getConnect().findOne({
-		email
+	async findByEmail(email:string):Promise<User> {
+	  return await  this.getConnect().findOne({
+			email
 		});
 	}
 

@@ -1,10 +1,8 @@
 {
-   "type": "postgres",
+   "type": "mongodb",
    "host": "localhost",
-   "port": 5432,
-   "username": "postgres",
-   "password": "lexpg",
-   "database": "db_class",
+   "port": 27017,
+   "database": "teste",
    "synchronize": false,
    "logging": false,
    "entities": [

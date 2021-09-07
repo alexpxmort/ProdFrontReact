@@ -1,8 +1,10 @@
+import { ObjectID } from "typeorm";
+
 export default interface IDbRepository{
 	save(data:object);
-	update(id:string, data:object);
-	delete(id:string);
-	get(id:string);
+	update(id:ObjectID, data:object);
+	delete(id:ObjectID);
+	get(id:ObjectID);
 	findAll();
 	paginate(keyword:any, limit:number, offset:number);
 }

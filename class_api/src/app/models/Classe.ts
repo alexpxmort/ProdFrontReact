@@ -1,11 +1,12 @@
-import {Entity, PrimaryGeneratedColumn, Column,CreateDateColumn,UpdateDateColumn, OneToMany} from "typeorm";
-import { Comment } from "./Comment";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, JoinColumn, ObjectID, ObjectIdColumn } from 'typeorm';
+import { Comment } from './Comment';
+
 
 @Entity("classes")
 export class Classe {
 
-    @PrimaryGeneratedColumn('uuid')
-    id: string;
+    @ObjectIdColumn({name:'id',type:'uuid'})
+    id: ObjectID;
 
     @Column()
     name: string;
@@ -16,14 +17,11 @@ export class Classe {
     @Column()
     video: string;
 
-		@Column({name:'total_comments'})
+		@Column({default:0})
     public totalComments: number;
 
 		@Column({type:'date'})
     data_init: Date;
-
-		@OneToMany(type => Comment,comment => comment.classe)
-		comments:Array<Comment>;
 
 		@Column({type:'date'})
     data_end: Date;

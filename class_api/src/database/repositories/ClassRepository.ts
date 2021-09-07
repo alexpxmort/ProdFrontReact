@@ -1,9 +1,10 @@
-import { ILike, getRepository } from 'typeorm';
+import { ILike, getRepository, ObjectID } from 'typeorm';
 import IDbRepository from './IDbRepository';
 import { Classe } from '../../app/models/Classe';
 
 
 export default class ClassRepository implements IDbRepository  {
+
 	private connect;
 
 	private model;
@@ -21,23 +22,28 @@ export default class ClassRepository implements IDbRepository  {
 	 return this.getConnect().save(data);
 	}
 
-	update(id: string, data: object) {
-	  return this.getConnect().update(id,data);
+	update(id: ObjectID, data: object) {
+	  return this.getConnect().update({'_id': id}, data);
 	}
 
-	delete(id: string) {
+	async updateTotal(id: ObjectID, total:number):Promise<any> {
+	  return this.getConnect().update({'_id': id}, {"totalComments": total});
+	}
+
+
+	delete(id: ObjectID) {
 	  return this.getConnect().delete(id);
 	}
 
-	get(id: string):Classe {
-	  return  this.getConnect().findOne(id,{
-			relations:['comments'],
-		});
-
+	  get(id: ObjectID):Promise<any> {
+	  return   this.getConnect().findOne({
+			where:{ _id: id}
+		})
 	}
 
 	findAll():Classe[] {
 	  return this.getConnect().find({
+			relations:['comments'],
 			order: {
 	      created_at: 'DESC',
 	    },

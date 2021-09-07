@@ -1,4 +1,4 @@
-import {getRepository} from "typeorm";
+import {getMongoRepository, getRepository} from "typeorm";
 import {Request, Response} from "express";
 import { User } from "../app/models/User";
 import UserRepository from '../database/repositories/UserRepository';
@@ -10,7 +10,7 @@ import '../database/connect';
 
 export class AuthController {
 
-    private userRepository = new UserRepository(getRepository,User);
+    private userRepository = new UserRepository(getMongoRepository,User);
 
     async authenticate(request: Request, response: Response) {
         const {email,password} = request.body;

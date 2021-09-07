@@ -1,7 +1,10 @@
-import { ILike } from 'typeorm';
+import { getRepository, ILike } from 'typeorm';
 import IDbRepository from './IDbRepository';
 import { Comment } from '../../app/models/Comment';
 import { getManager } from 'typeorm';
+import { Classe } from '../../app/models/Classe';
+import {ObjectID} from 'mongodb';
+
 
 
 export default class ClassRepository implements IDbRepository  {
@@ -22,18 +25,19 @@ export default class ClassRepository implements IDbRepository  {
 	 return this.getConnect().save(data);
 	}
 
-	update(id: string, data: object) {
+	update(id: ObjectID, data: object) {
 	  return this.getConnect().update(id,data);
 	}
 
-	delete(id: string|number) {
+	delete(id: ObjectID) {
 	  return this.getConnect().delete(id);
 	}
 
-	get(id: string):Comment {
-	  return this.getConnect().findOne(id);
+	get(id: ObjectID):Promise<any> {
+	  return   this.getConnect().findOne({
+			where:{ _id: id}
+		})
 	}
-	
 
 	findAll():Comment[] {
 	  return this.getConnect().find({
