@@ -10,8 +10,9 @@ export class Comment {
     @Column()
     comment: string;
 
-		@ManyToOne(type => Classe, classe => classe.comments)
-    @JoinColumn({name:'id_class'})
+
+		@ManyToOne(type => Classe, classe => classe.id)
+		@JoinColumn({name:'id_class',referencedColumnName:'id'})
     classe: Classe;
 
 		@CreateDateColumn()

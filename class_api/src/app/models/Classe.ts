@@ -22,8 +22,8 @@ export class Classe {
 		@Column({type:'date'})
     data_init: Date;
 
-		@OneToMany(type => Comment,comment => comment.id)
-		comments:Comment[];
+		@OneToMany(type => Comment,comment => comment.classe)
+		comments:Array<Comment>;
 
 		@Column({type:'date'})
     data_end: Date;

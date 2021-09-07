@@ -1,6 +1,6 @@
 export default interface IDbRepository{
 	save(data:object);
-	update(id:number, data:object);
+	update(id:string, data:object);
 	delete(id:string);
 	get(id:string);
 	findAll();

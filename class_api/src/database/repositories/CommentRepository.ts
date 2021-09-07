@@ -20,7 +20,7 @@ export default class ClassRepository implements IDbRepository  {
 	 return this.getConnect().save(data);
 	}
 
-	update(id: number, data: object) {
+	update(id: string, data: object) {
 	  return this.getConnect().update(id,data);
 	}
 

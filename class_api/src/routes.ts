@@ -26,8 +26,24 @@ routes.post('/classes/comments',async (req:Request, resp:Response) => {
 } );
 
 
+
+routes.get('/classes/comments/:id',async (req:Request, resp:Response) => {
+	return  await commentsController.get(req,resp);
+} );
+
+
+routes.delete('/classes/comments/:id',async (req:Request, resp:Response) => {
+	return  await commentsController.remove(req,resp);
+} );
+
+
 routes.get('/classes/:id',async (req:Request, resp:Response) => {
 	return  await classController.get(req,resp);
+} );
+
+
+routes.put('/classes/:id',async (req:Request, resp:Response) => {
+	return  await classController.update(req,resp);
 } );
 
 

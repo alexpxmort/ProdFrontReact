@@ -1,4 +1,4 @@
-import { ILike } from 'typeorm';
+import { ILike, getRepository } from 'typeorm';
 import IDbRepository from './IDbRepository';
 import { Classe } from '../../app/models/Classe';
 
@@ -16,11 +16,11 @@ export default class ClassRepository implements IDbRepository  {
 	  return this.connect(this.model)
 	}
 
-	 save(data: object):Classe {
+	 async save(data: object):Promise<Classe> {
 	 return this.getConnect().save(data);
 	}
 
-	update(id: number, data: object) {
+	update(id: string, data: object) {
 	  return this.getConnect().update(id,data);
 	}
 
@@ -28,11 +28,11 @@ export default class ClassRepository implements IDbRepository  {
 	  return this.getConnect().delete(id);
 	}
 
-	get(id: string):Classe {
-		console.log(id);
-	  return this.getConnect().findOne({
-			where:{id}
+	  get(id: string):Classe {
+	  return  this.getConnect().findOne(id,{
+			relations:['comments'],
 		});
+
 	}
 
 	findAll():Classe[] {

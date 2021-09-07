@@ -5,6 +5,5 @@ export const schemaClass = yup.object().shape({
 	description: yup.string().trim().min(1).required('O campo description é obrigatorio'),
 	video: yup.string().trim().min(1).required('O campo video é obrigatorio'),
 	data_init: yup.date().required('O campo data_init é obrigatorio'),
-	data_end: yup.date().required('O campo data_end é obrigatorio'),
-	total_comments: yup.number().required('O campo total_comments é obrigatorio'),
+	data_end: yup.date().required('O campo data_end é obrigatorio')
 });

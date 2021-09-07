@@ -52,8 +52,8 @@
 					"data_end":{
 						"type":"string"
 					},
-					"total_comments":{
-						"type":"number"
+					"comments":{
+						"type":"array"
 					}
 			}
 		},
@@ -69,7 +69,7 @@
 		},
 		"Comment":{
 			"properties": {
-					"id_class":{
+					"classe":{
 						"type":"string"
 					},
 					"comment":{
@@ -181,6 +181,51 @@
 				}
 			}
 		},
+		"/classes/comments/{id}":{
+			"parameters": [
+				{
+					"name": "id",
+					"in": "path",
+					"required": true,
+					"description": "ID of the Comment that we want use",
+					"type": "string"
+				}
+			],
+			"get": {
+				"tags":[
+					"Comments"
+				],
+				"summary": "Get Comment By ID",
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Comment"
+						}
+					},
+					"404":{
+						"description": "FAILED Comment NOT FOUND"
+					}
+				}
+			},
+			"delete": {
+				"tags":[
+					"Comments"
+				],
+				"summary": "Delete Comment By ID",
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Comment"
+						}
+					},
+					"404":{
+						"description": "FAILED Comment NOT FOUND"
+					}
+				}
+			}
+		},
 		"/classes/{id}":{
 			"parameters": [
 				{
@@ -219,6 +264,40 @@
 						"schema":{
 							"$ref":"#/definitions/Classe"
 						}
+					},
+					"404":{
+						"description": "FAILED Classe NOT FOUND"
+					}
+				}
+			},
+			"put": {
+				"tags": [
+					"Classes"
+				],
+				"summary": "Update Classe",
+				"parameters": [
+					{
+						"name": "body",
+						"in": "body",
+						"required": true,
+						"description": "Update an existing Classe",
+						"schema": {
+							"$ref":"#/definitions/Classe"
+						}
+					}
+				],
+				"produces":[
+					"application/json"
+				],
+				"responses": {
+					"200":{
+						"description": "OK",
+						"schema":{
+							"$ref":"#/definitions/Classe"
+						}
+					},
+					"400":{
+						"description": "FAILED UPDATE CLASSE"
 					},
 					"404":{
 						"description": "FAILED Classe NOT FOUND"

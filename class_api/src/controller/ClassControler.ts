@@ -24,6 +24,42 @@ export class ClassController {
 					return response.status(400).json({ msg: `Erro ao criar classe: ${err.message}`, error: true });
 				}
 			} catch (err) {
+
+				const errorMessages = {};
+
+				if (err instanceof Yup.ValidationError) {
+					err.inner.forEach((error) => {
+						errorMessages[error.path] = error.message;
+					});
+				}
+
+				return response.status(400).json({ msg: 'Dados Inválidos', error: true, erros: errorMessages });
+			}
+
+    }
+
+
+		async update(request: Request, response: Response) {
+			let {body,params} = request;
+
+			try {
+				await schemaClass.validate(body, { abortEarly: false });
+				try {
+
+					const {id} = params;
+
+					let classe = await this.classRepository.get(id);
+
+					if(!classe){
+						return response.status(404).json({error:true,msg:'Classe Not Found!'});
+					}
+
+					 classe = await this.classRepository.update(classe.id,body);
+					return response.status(200).json({ error: false, msg:'Classe Atualizada com Sucesso!' });
+				} catch (err) {
+					return response.status(400).json({ msg: `Erro ao atualizar classe: ${err.message}`, error: true });
+				}
+			} catch (err) {
 				const errorMessages = {};
 
 				if (err instanceof Yup.ValidationError) {
@@ -41,11 +77,15 @@ export class ClassController {
 			let{params} = request;
 			let {id} = params;
 
-			let classe = await this.classRepository.get(id);
+			let classe = await getRepository(Classe).findOne(id,{
+				relations:['comments']
+			});
 
 			if(!classe){
 				return response.status(404).json({error:true,msg:'Classe Not Found!'});
 			}
+
+			classe.comments = classe.comments.slice(0,3);
 
 			return response.status(200).json({ error: false, classe });
 
