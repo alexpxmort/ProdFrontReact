@@ -112,13 +112,6 @@ export class ClassController {
 			let data =  await this.classRepository.findAll();
 
 
-			// data.forEach((val:ClasseDTO)=>{
-			// 	// if(val.comments.length > 0){
-			// 	// 	val.last_comment = val.comments[val.comments.length - 1].comment;
-			// 	// 	val.last_comment_date = val.comments[val.comments.length - 1].created_at;
-			// 	// }
-			// })
-
 			return res.status(200).json({error:false,data});
 
 		};

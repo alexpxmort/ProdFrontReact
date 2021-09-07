@@ -1,6 +1,7 @@
 import { ILike, getRepository, ObjectID } from 'typeorm';
 import IDbRepository from './IDbRepository';
 import { Classe } from '../../app/models/Classe';
+import { ClasseDTO } from '../../dto/ClasseDTO';
 
 
 export default class ClassRepository implements IDbRepository  {
@@ -41,13 +42,23 @@ export default class ClassRepository implements IDbRepository  {
 		})
 	}
 
-	findAll():Classe[] {
-	  return this.getConnect().find({
-			relations:['comments'],
+	async findAll():Promise<any> {
+	  let data = await  this.getConnect().find({
 			order: {
 	      created_at: 'DESC',
 	    },
 		});
+
+
+		// data.forEach(async (val:ClasseDTO)=>{
+		// 	val.comments = await (val.id);
+		// 	if(val.comments.length > 0){
+		// 		val.last_comment = val.comments[val.comments.length - 1].comment;
+		// 		val.last_comment_date = val.comments[val.comments.length - 1].created_at;
+		// 	}
+		// });
+
+		return data;
 	}
 
 	paginate(keyword:any, limit:number, offset:number) {

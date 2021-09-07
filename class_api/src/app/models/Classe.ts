@@ -5,8 +5,8 @@ import { Comment } from './Comment';
 @Entity("classes")
 export class Classe {
 
-    @ObjectIdColumn({name:'id',type:'uuid'})
-    id: ObjectID;
+    @ObjectIdColumn({name:'_id',type:'uuid'})
+    public id: ObjectID;
 
     @Column()
     name: string;

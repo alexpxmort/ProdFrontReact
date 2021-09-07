@@ -4,6 +4,7 @@ import { Comment } from '../../app/models/Comment';
 import { getManager } from 'typeorm';
 import { Classe } from '../../app/models/Classe';
 import {ObjectID} from 'mongodb';
+import { ClasseDTO } from '../../dto/ClasseDTO';
 
 
 
@@ -39,12 +40,26 @@ export default class ClassRepository implements IDbRepository  {
 		})
 	}
 
-	findAll():Comment[] {
+	getCommensByClassId(classeId:ObjectID):Promise<Comment[]> {
 	  return this.getConnect().find({
+			where:{
+				classe:String(classeId)
+			},
 			order: {
 	      created_at: 'DESC',
 	    },
 		});
+	}
+
+
+	async findAll():Promise<any> {
+	  let data = await  this.getConnect().find({
+			order: {
+	      created_at: 'DESC',
+	    },
+		});
+
+		return data;
 	}
 
 	paginate(keyword:any, limit:number, offset:number) {
