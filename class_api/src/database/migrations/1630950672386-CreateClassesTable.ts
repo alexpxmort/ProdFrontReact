@@ -40,14 +40,14 @@ export class CreateClassesTable1630950672386 implements MigrationInterface {
 							default:0,
 						},
 						{
-							name:'date_created',
-							type:'date',
+							name:'created_at',
+							type:'timestamp',
 							default:'current_timestamp'
 
 						},
 					{
-					 name:'data_updated',
-					 type:'date',
+					 name:'updated_at',
+					 type:'timestamp',
 					 default:'current_timestamp'
 
 				 },

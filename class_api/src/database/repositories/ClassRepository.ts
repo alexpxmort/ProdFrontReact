@@ -2,6 +2,7 @@ import { ILike, getRepository } from 'typeorm';
 import IDbRepository from './IDbRepository';
 import { Classe } from '../../app/models/Classe';
 
+
 export default class ClassRepository implements IDbRepository  {
 	private connect;
 
@@ -28,7 +29,7 @@ export default class ClassRepository implements IDbRepository  {
 	  return this.getConnect().delete(id);
 	}
 
-	  get(id: string):Classe {
+	get(id: string):Classe {
 	  return  this.getConnect().findOne(id,{
 			relations:['comments'],
 		});
@@ -47,7 +48,7 @@ export default class ClassRepository implements IDbRepository  {
 	  return this.getConnect().findAndCount({
 	    where: { nome: ILike(`%${keyword}%`) },
 	    order: {
-	      created_at: 'DESC',
+	      date_created: 'DESC',
 	    },
 	    take: limit,
 	    skip: offset,

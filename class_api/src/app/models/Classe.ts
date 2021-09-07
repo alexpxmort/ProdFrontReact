@@ -28,10 +28,10 @@ export class Classe {
 		@Column({type:'date'})
     data_end: Date;
 
-		@CreateDateColumn()
-    public date_created: Date;
+		@CreateDateColumn({name:'created_at'})
+    public created_at: Date;
 
-    @UpdateDateColumn({name:'data_updated'})
-    public date_updated: Date;
+    @UpdateDateColumn({name:'updated_at'})
+    public updated_at: Date;
 
 }

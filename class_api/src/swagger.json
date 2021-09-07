@@ -113,6 +113,20 @@
 			}
 		},
 		"/classes":{
+			"get": {
+				"tags": [
+					"Classes"
+				],
+				"summary":"Gel all Classes",
+				"responses":{
+					"200":{
+						"description":"OK",
+						"schema":{
+							"$ref":"#/definitions/Classe"
+						}
+					}
+				}
+			},
 			"post": {
 				"tags": [
 					"Classes"

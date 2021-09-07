@@ -19,8 +19,8 @@ export class CreateCommentsTable1630950914169 implements MigrationInterface {
 						 type:'varchar',
 						 },
 						{
-						 name:'date_created',
-						 type:'date',
+						 name:'created_at',
+						 type:'timestamp',
 						 default:'current_timestamp'
 						 },
 						 {

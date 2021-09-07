@@ -1,6 +1,8 @@
 import { ILike } from 'typeorm';
 import IDbRepository from './IDbRepository';
 import { Comment } from '../../app/models/Comment';
+import { getManager } from 'typeorm';
+
 
 export default class ClassRepository implements IDbRepository  {
 	private connect;
@@ -31,6 +33,7 @@ export default class ClassRepository implements IDbRepository  {
 	get(id: string):Comment {
 	  return this.getConnect().findOne(id);
 	}
+	
 
 	findAll():Comment[] {
 	  return this.getConnect().find({

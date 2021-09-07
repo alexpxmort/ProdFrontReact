@@ -34,13 +34,14 @@ export class CommentController {
 
 					await this.classeRepository.update(classeExists.id,classeExists);
 					return response.status(200).json({ error: false, comment });
-				} catch (err) {
+				} catch  (err) {
 					if(err.message.includes('query across')){
 						return response.status(200).json({ error: false, msg:'Comment Criado com Sucesso!' });
 					}
 					return response.status(400).json({ msg: `Erro ao criar comment: ${err.message}`, error: true });
 				}
 			} catch (err) {
+
 				const errorMessages = {};
 
 				if (err instanceof Yup.ValidationError) {

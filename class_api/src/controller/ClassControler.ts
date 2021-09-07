@@ -1,10 +1,15 @@
 import {getRepository} from "typeorm";
 import {Request, Response} from "express";
 import { Classe } from "../app/models/Classe";
+import { Comment } from "../app/models/Comment";
 import '../database/connect';
 import ClassRepository from '../database/repositories/CommentRepository';
 import { schemaClass } from '../validations/class.validation';
 import * as Yup from 'yup';
+import Pagination from '../utils/pagination.utils';
+import { ClasseDTO } from '../dto/ClasseDTO';
+
+
 
 
 export class ClassController {
@@ -73,6 +78,45 @@ export class ClassController {
 
     }
 
+		 async getClasses (req:Request, res:Response) {
+			const { query } = req;
+			const { page, size } = query;
+			const keyword = query.keyword || '';
+
+			if(page && size){
+				const paginator = new Pagination(page, size);
+
+				try{
+					const [result, total] = await this.classRepository.paginate(
+						keyword, paginator.getLimit(), paginator.getOffSet(),
+					)
+
+					 let dataPaginated = paginator.getPaginationData(result, total);
+
+					 return res.json(dataPaginated);
+				}catch(err){
+					return res.status(400).json({msg:`Classes erro ${err.message}`,error:true})
+				}
+			}
+
+			let data =  await getRepository(Classe).find({
+				relations: ['comments'],
+				order: {
+					created_at: 'DESC'
+				}
+			});
+
+			data.forEach((val:ClasseDTO)=>{
+				if(val.comments.length > 0){
+					val.last_comment = val.comments[val.comments.length - 1].comment;
+					val.last_comment_date = val.comments[val.comments.length - 1].created_at;
+				}
+			})
+
+			return res.status(200).json({error:false,data});
+
+		};
+
 		async get(request: Request, response: Response) {
 			let{params} = request;
 			let {id} = params;
@@ -85,6 +129,9 @@ export class ClassController {
 				return response.status(404).json({error:true,msg:'Classe Not Found!'});
 			}
 
+			classe.comments.sort((a:Comment,b:Comment) => {
+				return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+			});
 			classe.comments = classe.comments.slice(0,3);
 
 			return response.status(200).json({ error: false, classe });

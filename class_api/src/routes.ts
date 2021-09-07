@@ -20,6 +20,11 @@ routes.post('/classes',async (req:Request, resp:Response) => {
 	return  await classController.create(req,resp);
 } );
 
+routes.get('/classes',async (req:Request, resp:Response) => {
+	return  await classController.getClasses(req,resp);
+} );
+
+
 
 routes.post('/classes/comments',async (req:Request, resp:Response) => {
 	return  await commentsController.create(req,resp);

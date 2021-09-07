@@ -1,4 +1,4 @@
-import {Entity, PrimaryGeneratedColumn, Column,CreateDateColumn,UpdateDateColumn, JoinColumn, ManyToOne} from "typeorm";
+import {Entity, PrimaryGeneratedColumn, Column,CreateDateColumn,BeforeInsert, JoinColumn, ManyToOne, getRepository} from "typeorm";
 import { Classe } from './Classe';
 
 @Entity("comments")
@@ -16,6 +16,7 @@ export class Comment {
     classe: Classe;
 
 		@CreateDateColumn()
-    public date_created: Date;
+    public created_at: Date;
 
+	
 }
